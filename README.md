@@ -4,6 +4,7 @@ A tool for converting 3D models (GLB/GLTF) into Minecraft JSON models. Designed 
 
 ## Features
 - **Standalone & Blender Plugin**: Works as a command-line tool or runs directly inside Blender.
+- **Optimization Engine**: Built-in geometric merger to reduce the number of Minecraft box elements, preventing client-side lag.
 - **Auto-Discovery**: Automatically splits GLB files into separate models based on object names.
 - **PBR Extraction**: Saves Normal (`_n`) and Specular (`_s`) maps using the LabPBR 1.3 standard for shader support.
 - **GeckoLib Mode**: Can export `.geo.json` to bypass standard Minecraft rotation limits.
@@ -19,13 +20,13 @@ A tool for converting 3D models (GLB/GLTF) into Minecraft JSON models. Designed 
 ### 1. Standalone / CLI
 Use this to batch convert models from GLB to JSON.
 ```bash
-python mc_prop_bridge.py multi-part input.glb output_dir texture_name --namespace=your_mod_id
+python mc_prop_bridge.py multi-part input.glb output_dir texture_name --namespace=your_mod_id --optimize
 ```
 
 ### 2. Blender Mode
 Import the script into Blender to convert specific meshes from your scene.
 ```bash
-blender -b --python mc_prop_bridge.py -- input.glb output_dir texture_name your_mod_id
+blender -b --python mc_prop_bridge.py -- input.glb output_dir texture_name your_mod_id --optimize
 ```
 
 ### 3. GeckoLib Export
